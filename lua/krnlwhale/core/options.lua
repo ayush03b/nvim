@@ -5,6 +5,7 @@ local opts = { noremap = true, silent = true }
 -- line numbers
 opt.relativenumber = true -- show relative line numbers
 opt.cursorline = true
+opt.colorcolumn = "100"
 opt.number = true -- shows absolute line number on cursor line (when relative number is on)
 opt.guicursor = ""
 -- disable mouse in neovim
@@ -12,7 +13,7 @@ opt.mouse = nil
 
 -- Explorer settings
 vim.g.netrw_banner = 0
-
+vim.g.netrw_liststyle = 1
 
 -- tabs & indentation
 opt.tabstop = 4 -- 4 spaces for tabs (prettier default)

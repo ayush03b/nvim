@@ -13,7 +13,6 @@ keymap.set("n", "<leader>pv", vim.cmd.exit)
 -- Plugin Keybinds
 ----------------------
 
-
 -- telescope
 keymap.set("n", "<leader>ff", "<cmd>Telescope find_files<cr>") -- find files within current working directory, respects .gitignore
 keymap.set("n", "<leader>fr", "<cmd>Telescope oldfiles<cr>", { desc = "Fuzzy find recent files" })
@@ -55,3 +54,32 @@ keymap.set("n", "<Leader>b", ":buffers<CR>")
 
 -- Explorer
 keymap.set("n", "<leader>e", ":Ex<CR>")
+
+-- minimap
+keymap.set("n", "<leader>pp", ":MinimapToggle<CR>")
+
+-- keeps cursor in middle while jumping
+keymap.set("n", "<C-d>", "<C-d>zz")
+keymap.set("n", "<C-u>", "<C-u>zz")
+
+-- keeps cursor in middle while searching
+keymap.set("n", "n", "nzzzv")
+keymap.set("n", "N", "Nzzzv")
+
+-- greatest remaps ever - deleting to void registers
+keymap.set("x", "<leader>p", '"_dP')
+keymap.set("n", "<leader>d", '"_dP')
+keymap.set("v", "<leader>d", '"_dP')
+
+keymap.set("n", "<C-f>", "<cmd>silent !tmux neww tmux-sessionizer<CR>")
+
+keymap.set("n", "<C-n>", "<cmd>cnext<CR>zz")
+keymap.set("n", "<C-p>", "<cmd>cpext<CR>zz")
+keymap.set("n", "<leader>n", "<cmd>lnext<CR>zz")
+keymap.set("n", "<leader>p", "<cmd>lprev<CR>zz")
+
+keymap.set("n", "<leader>s", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]])
+
+keymap.set("n", "<leader>nh", ":noh<CR>")
+
+vim.keymap.set("n", "J", "mzJ`z")
