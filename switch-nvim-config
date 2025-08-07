@@ -1,0 +1,35 @@
+#!/bin/bash
+
+set -e
+
+NVIM_DIR="$HOME/.config"
+CURRENT="$NVIM_DIR/nvim"
+BAK="$NVIM_DIR/nvim.bak"
+ALT="$NVIM_DIR/nvim.bak.bak"
+
+echo "⏳ Switching Neovim config..."
+
+# Backup current config to .bak
+if [ -d "$CURRENT" ]; then
+  mv "$CURRENT" "$BAK"
+else
+  echo "❌ No current nvim config found at $CURRENT"
+  exit 1
+fi
+
+# Move alternate config to nvim
+if [ -d "$ALT" ]; then
+  mv "$ALT" "$CURRENT"
+else
+  echo "❌ Alternate config not found at $ALT"
+  # Restore backup
+  mv "$BAK" "$CURRENT"
+  exit 1
+fi
+
+# Move backup to alternate slot
+mv "$BAK" "$ALT"
+
+echo "✅ Switched Neovim config!"
+echo "🔁 Restart Neovim to apply the new config."
+
